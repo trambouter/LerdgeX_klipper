@@ -25,7 +25,25 @@ default 0x20000 if MACH_STM32F4x5 || MACH_STM32F446
 default 0x1FFF0 if MACH_STM32F4x5 || MACH_STM32F446
 ```
 
-Дальше в принципе все по официальной инструкции, только теперь просто выбираем "64KiB bootloader"
+Дальше выставляем следующее в __make menuconfig__
+
+![](/images/stm32_config.png)
+
+После компиляции прошивки ее надо зашифровать, для этого можно использовать утилиту от Lerdge, или что проще использвать скрипт на Python:
+
+```
+cd ~
+wget https://raw.githubusercontent.com/trambouter/LerdgeX_klipper/main/crypt_lerdgeX.py
+python3 crypt_lerdgeX.py
+```
+
+На выходе получим файл __Lerdge_X_firmware_force.bin__ , закидываем его на microSD карту, предварительно создав там такую структуру каталогов (Lerdge_X_system\Firmware\)
+
+![](/images/folder_flash.png)
+
+Вставляем карточку, запускаем плату - пойдет процесс прошивки, после окончания - выключаем плату и вынимаем карточку. Если карточку не вынуть - то каждый раз при запуске платы будет запускаться процесс прошивки.
+
+Данный способ такжн подходит для K и Z плат, надо только соотвественно переименовать имя папки и имя прошивки (например: Lerdge_K_system\Firmware\Lerdge_K_firmware_force.bin)
 
 # Подключение к одноплатному компьютеру
 
@@ -65,5 +83,75 @@ __ADR__ - это какой адрес получит драйвер.
 Остается добавить только секцию настройки драйверов в конфиг Klipper:
 
 ```
-Тут будет конфиг
+[tmc2209 stepper_x]
+uart_pin: PC2
+run_current: 0.800
+stealthchop_threshold: 999999
+uart_address: 0
+interpolate: False
+
+[tmc2209 stepper_y]
+uart_pin: PC2
+run_current: 0.800
+stealthchop_threshold: 999999
+uart_address: 1
+interpolate: False
+
+[tmc2209 stepper_z]
+uart_pin: PC2
+run_current: 0.800
+stealthchop_threshold: 999999
+uart_address: 2
+interpolate: False
+
+[tmc2209 extruder]
+uart_pin: PC2
+run_current: 0.400
+stealthchop_threshold: 999999
+uart_address: 3
+interpolate: False
 ```
+
+#### Настройка sensorless homing
+Для настройки sensorless homing потребуется соединить выводы DIAG драйверов с входами концевиков X и Y на плате.
+
+![](/images/sensorless_homing.png)
+
+Далее правим конфиг:
++ для начала надо удалить или заккоментировать пины которые использовались для концевиков ранее (PB12,PB13)
+```
+#endstop_pin: ^!PB12
+#endstop_pin: ^!PB13 
+```
+
++ в секции __[stepper_x]__ добавим
+```
+endstop_pin: tmc2209_stepper_x:virtual_endstop
+homing_retract_dist: 0
+```
+
++ в секции __[stepper_y]__ добавим
+```
+endstop_pin: tmc2209_stepper_y:virtual_endstop
+homing_retract_dist: 0
+```
++ в секции __[tmc2209 stepper_x]__ добавим
+```
+diag_pin: ^PB12
+driver_SGTHRS: 90
+```
++ в секции __[tmc2209 stepper_y]__ добавим
+```
+diag_pin: ^PB13
+driver_SGTHRS: 90
+```
+Информацию по настройке чуствительности driver_SGTHRS смотрите в официальной документации по Klipper
+
+
+# Подключение дисплея Lerdge к одноплатному пк
+
+Информация о подключении и драйвер для linux доступны в репозитории [https://github.com/trambouter/fb_st7796s_lerdge](https://github.com/trambouter/fb_st7796s_lerdge)
+
+# Распиновка платы LerdgeX
+
+[Lerdge X Pin Map](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge%20X%20Pin%20Map.pdf)
