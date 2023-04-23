@@ -167,12 +167,12 @@ driver_SGTHRS: 90
 
 
 | Name | Pin | Name | Pin |
-|---|---|---|---|---|
-| Hotend Sensor | PC0 | Hotend Fan  | PC15
-| Hotend Heater | PA1 | Cooling Fan | PA0
-| Hotbed Sensor | PC1 | Chasis LED  | PC6
-| Hotbed Heater | PA2 | Status LED  | PC7
+|---|---|---|---|
+| Hotend Sensor | PC0 | Hotend Fan  | PC15 |
+| Hotend Heater | PA1 | Cooling Fan | PA0 |
+| Hotbed Sensor | PC1 | Chasis LED  | PC6 |
+| Hotbed Heater | PA2 | Status LED  | PC7 |
 | Probe | PB15 | Servo | PD13|
-| Power | PC14 | | 
+| Power | PC14 | | |
 
 [Lerdge X Pin Map PDF](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge%20X%20Pin%20Map.pdf)
