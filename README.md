@@ -47,7 +47,7 @@ python3 crypt_lerdgeX.py
 
 ### Готовый файл прошивки
 
-[Здесь](Lerdge_X_firmware_force.bin) можно скачать готовый файл с прошивкой (версия v0.11.0-180)
+[Здесь](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge_X_firmware_force.bin) можно скачать готовый файл с прошивкой (версия v0.11.0-180)
 
 # Подключение к одноплатному компьютеру
 
