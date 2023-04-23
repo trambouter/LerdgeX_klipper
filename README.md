@@ -45,6 +45,10 @@ python3 crypt_lerdgeX.py
 
 Данный способ также подходит для K и Z плат, надо только соответственно переименовать имя папки и имя прошивки (например: Lerdge_K_system\Firmware\Lerdge_K_firmware_force.bin)
 
+### Готовый файл прошивки
+
+[Здесь](Lerdge_X_firmware_force.bin) можно скачать готовый файл с прошивкой (версия v0.11.0-180)
+
 # Подключение к одноплатному компьютеру
 
 Для подключения к RaspberryPi или OrangePi удобно использовать разъём, к которому подключается плата WiFi, т.е. без использования USB.
@@ -154,4 +158,21 @@ driver_SGTHRS: 90
 
 # Распиновка платы LerdgeX
 
-[Lerdge X Pin Map](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge%20X%20Pin%20Map.pdf)
+| Motor 	| X    | Y    | Z    | E    |
+|---	|---   |---   |---   |---   |
+| EN 	| PB11 | PB11 | PC4  | PA5  |
+| STEP 	| PB10 | PB0  | PA7	 | PA4  |
+| DIR	| PB2  | PC3  | PA6  | PA3  |
+|ENDSTOP| PB12 | PB13 | PB14 | PE1  |
+
+
+| Name | Pin | Name | Pin |
+|---|---|---|---|---|
+| Hotend Sensor | PC0 | Hotend Fan  | PC15
+| Hotend Heater | PA1 | Cooling Fan | PA0
+| Hotbed Sensor | PC1 | Chasis LED  | PC6
+| Hotbed Heater | PA2 | Status LED  | PC7
+| Probe | PB15 | Servo | PD13|
+| Power | PC14 | | 
+
+[Lerdge X Pin Map PDF](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge%20X%20Pin%20Map.pdf)
