@@ -6,7 +6,7 @@
 
 ### Готовый файл прошивки
 
-[Здесь](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge_X_firmware_force.bin) можно скачать готовый файл с прошивкой (версия v0.11.0-180)
+[Здесь](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge_X_firmware_force.bin) можно скачать готовый файл с прошивкой (версия v0.11.0-307)
 
 ### Компиляция прошивки
 
