@@ -207,9 +207,9 @@ cycle_time: 0.01
 
 | Motor  | X    | Y    | Z    | E    |
 |--- |---   |---   |---   |---   |
-| EN  | PB11 | PB11 | PC4  | PA5  |
+| EN  | PB11 | PB1 | PC4  | PA5  |
 | STEP  | PB10 | PB0  | PA7  | PA4  |
-| DIR | PB2  | PC3  | PA6  | PA3  |
+| DIR | PB2  | PC5  | PA6  | PA3  |
 |ENDSTOP| PB12 | PB13 | PB14 | PE1  |
 
 | Name | Pin | Name | Pin |
