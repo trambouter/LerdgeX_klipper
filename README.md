@@ -6,25 +6,13 @@
 
 ### Готовый файл прошивки
 
-[Здесь](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge_X_firmware_force.bin) можно скачать готовый файл с прошивкой (версия v0.11.0-307)
+[Здесь](https://github.com/trambouter/LerdgeX_klipper/raw/main/Lerdge_X_firmware_force.bin) можно скачать готовый файл с прошивкой (версия v0.12.0-410)
 
 ### Компиляция прошивки
 
 Последние версии Klipper не собираются по инструкции от Lerdge, чтобы прошивка собралась надо вручную кое-что изменить.
 
 Что изменить в файле ~/klipper/src/stm32/Kconfig
-
-найти:
-
-```text
-bool "64KiB bootloader" if MACH_STM32F103 || MACH_STM32F446 || MACH_STM32F401
-```
-
-изменить на:
-
-```text
-bool "64KiB bootloader" if MACH_STM32F103 || MACH_STM32F446 || MACH_STM32F401 || MACH_STM32F407
-```
 
 найти:
 
